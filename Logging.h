@@ -118,7 +118,7 @@ public:
     LOG_FUNC(Warn, LOG_WARN);
     LOG_FUNC(Info, LOG_INFO);
     LOG_FUNC(Debug, LOG_DEBUG);
-    LOG_FUNC(Verbose, LOG_VERBOSE);
+    LOG_FUNC(Verb, LOG_VERBOSE);
 
     static Logger& get() { return logger_; }
     static int fromLevelString(const std::string& str);
@@ -130,12 +130,12 @@ protected:
 };
 
 #define FLOG(msg)  Logger::get().Fatal(LogMessage(FROM_HERE, "FATAL", str(msg)))
-#define CLOG(msg)  Logger::get().Fatal(LogMessage(FROM_HERE, "CRITI", str(msg)))
-#define ELOG(msg)  Logger::get().Fatal(LogMessage(FROM_HERE, "ERROR", str(msg)))
-#define WLOG(msg)  Logger::get().Fatal(LogMessage(FROM_HERE, "WARN", str(msg)))
-#define ILOG(msg)  Logger::get().Fatal(LogMessage(FROM_HERE, "INFO", str(msg)))
-#define DLOG(msg)  Logger::get().Fatal(LogMessage(FROM_HERE, "DEBUG", str(msg)))
-#define VLOG(msg)  Logger::get().Fatal(LogMessage(FROM_HERE, "VERB", str(msg)))
+#define CLOG(msg)  Logger::get().Criti(LogMessage(FROM_HERE, "CRITI", str(msg)))
+#define ELOG(msg)  Logger::get().Error(LogMessage(FROM_HERE, "ERROR", str(msg)))
+#define WLOG(msg)  Logger::get().Warn(LogMessage(FROM_HERE, "WARN", str(msg)))
+#define ILOG(msg)  Logger::get().Info(LogMessage(FROM_HERE, "INFO", str(msg)))
+#define DLOG(msg)  Logger::get().Debug(LogMessage(FROM_HERE, "DEBUG", str(msg)))
+#define VLOG(msg)  Logger::get().Verb(LogMessage(FROM_HERE, "VERB", str(msg)))
 
 #define FLOG_IF(condition, msg) !(condition) ? (void)0 : FLOG(msg)
 #define CLOG_IF(condition, msg) !(condition) ? (void)0 : CLOG(msg)
